@@ -1,1 +1,1 @@
-This repository was created to show homework5
+This repository was created to show all homework
