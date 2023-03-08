@@ -8,13 +8,13 @@ public class Main {
         Main obj = new Main();
 
         System.out.println("Метод findSymbolOccurance");
-        System.out.println("Символ зустрічається - " + obj.findSymbolOccurance("Java", 'a') + " раз/разів");
+        System.out.println("Символ зустрічається - " + obj.findSymbolOccurance("", 'a') + " раз/разів");
 
         System.out.println();
 
         System.out.println("Метод findWordPosition");
-        System.out.println("Result : " + obj.findWordPosition("Apollo", "pollo"));
-        System.out.println("Result : " + obj.findWordPosition("Apple", "Plant"));
+        System.out.println("Result : " + obj.findWordPosition("Java is awesome", "is"));
+        System.out.println("Result : " + obj.findWordPosition("", "Plant"));
 
         System.out.println();
 
@@ -25,7 +25,7 @@ public class Main {
 
         System.out.println("Метод isPalindrome");
         System.out.println(obj.isPalindrome("ERE"));
-        System.out.println(obj.isPalindrome("Allo"));
+        System.out.println(obj.isPalindrome(""));
 
         System.out.println();
         System.out.println();
@@ -38,9 +38,11 @@ public class Main {
         char[] letters = str.toCharArray();
         int count = 0;
 
-        for (int i = 0; i < letters.length; i++) {
-            if (letters[i] == ch) {
-                count++;
+        if (str.length() >= 1 && str != null) {
+            for (int i = 0; i < letters.length; i++) {
+                if (letters[i] == ch) {
+                    count++;
+                }
             }
         }
         return count;
@@ -48,25 +50,27 @@ public class Main {
 
     public int findWordPosition(String source, String target) {
         int index = source.indexOf(target);
-
-        if (index != -1) {
-            return index;
-        } else {
-            return -1;
-        }
+        return index;
     }
 
     public String stringReverse(String simpleString) {
         char[] stringInLetters = simpleString.toCharArray();
         String result = "";
 
-        for (int i = stringInLetters.length - 1; i >= 0; i--) {
-            result += String.valueOf(stringInLetters[i]);
+        if (simpleString.length() >= 1) {
+            for (int i = stringInLetters.length - 1; i >= 0; i--) {
+                result += String.valueOf(stringInLetters[i]);
+            }
+        } else {
+            result = "You cannot unwrap a null line";
         }
         return result;
     }
 
     public boolean isPalindrome(String source) {
+        if (source == null || source == "") {
+            return false;
+        }
         String lower = source.toLowerCase();
         char[] sourceInLetters = lower.toCharArray();
         String reverseWord = "";
@@ -74,12 +78,7 @@ public class Main {
         for (int i = sourceInLetters.length - 1; i >= 0; i--) {
             reverseWord += String.valueOf(sourceInLetters[i]);
         }
-
-        if (lower.equals(reverseWord)) {
-            return true;
-        } else {
-            return false;
-        }
+        return lower.equals(reverseWord);
     }
 
     public void guessWord() {
