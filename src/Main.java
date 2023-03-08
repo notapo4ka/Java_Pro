@@ -13,8 +13,8 @@ public class Main {
         System.out.println();
 
         System.out.println("Метод findWordPosition");
-        System.out.println("Result : " + obj.findWordPosition("Apollo", "pollo" ));
-        System.out.println("Result : " + obj.findWordPosition("Apple", "Plant" ));
+        System.out.println("Result : " + obj.findWordPosition("Apollo", "pollo"));
+        System.out.println("Result : " + obj.findWordPosition("Apple", "Plant"));
 
         System.out.println();
 
@@ -35,12 +35,11 @@ public class Main {
     }
 
     public int findSymbolOccurance(String str, char ch) {
-
         char[] letters = str.toCharArray();
         int count = 0;
 
-        for ( int i = 0; i < letters.length; i++ ) {
-            if ( letters[i] == ch ) {
+        for (int i = 0; i < letters.length; i++) {
+            if (letters[i] == ch) {
                 count++;
             }
         }
@@ -48,8 +47,8 @@ public class Main {
     }
 
     public int findWordPosition(String source, String target) {
-
         int index = source.indexOf(target);
+
         if (index != -1) {
             return index;
         } else {
@@ -58,23 +57,21 @@ public class Main {
     }
 
     public String stringReverse(String simpleString) {
-
         char[] stringInLetters = simpleString.toCharArray();
         String result = "";
 
-        for ( int i = stringInLetters.length - 1; i >= 0; i--) {
+        for (int i = stringInLetters.length - 1; i >= 0; i--) {
             result += String.valueOf(stringInLetters[i]);
         }
         return result;
     }
 
     public boolean isPalindrome(String source) {
-
         String lower = source.toLowerCase();
         char[] sourceInLetters = lower.toCharArray();
         String reverseWord = "";
 
-        for ( int i = sourceInLetters.length - 1; i >= 0; i--) {
+        for (int i = sourceInLetters.length - 1; i >= 0; i--) {
             reverseWord += String.valueOf(sourceInLetters[i]);
         }
 
@@ -86,16 +83,9 @@ public class Main {
     }
 
     public void guessWord() {
-
-        String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado",
-                "broccoli", "carrot", "cherry", "garlic", "grape",
-                "melon", "leak", "kiwi", "mango", "mushroom", "nut",
-                "olive", "pea", "peanut", "pear", "pepper", "pineapple",
-                "pumpkin", "potato"};
-
+        String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
         Random random = new Random();
         Scanner input = new Scanner(System.in);
-
         int randomNum = random.nextInt(25);
         String word = words[randomNum];
         String playerChoice = "";
@@ -111,23 +101,22 @@ public class Main {
                 System.out.println("Не вгадав! Вот тобі підказка");
                 sameLetters(word, playerChoice);
             }
-        } while (word != playerChoice) ;
+        } while (word != playerChoice);
     }
 
     public void sameLetters(String word, String playerChoice) {
-
         char[] wordInLetters = word.toCharArray();
         char[] playerChoiceInLetters = playerChoice.toCharArray();
         int gridLength = 15;
         char[] gridInLetters = new char[gridLength];
 
-        for ( int k = 0; k < gridLength; k++ ) {
+        for (int k = 0; k < gridLength; k++) {
             gridInLetters[k] = '#';
         }
 
-        for ( int i = 0; i < wordInLetters.length; i++ ) {
-            for ( int j = 0; j < playerChoiceInLetters.length; j++ ) {
-                if ( wordInLetters[i] == playerChoiceInLetters[j]) {
+        for (int i = 0; i < wordInLetters.length; i++) {
+            for (int j = 0; j < playerChoiceInLetters.length; j++) {
+                if (wordInLetters[i] == playerChoiceInLetters[j]) {
                     gridInLetters[i] = wordInLetters[i];
                 }
             }
