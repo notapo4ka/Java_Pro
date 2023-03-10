@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -34,6 +35,7 @@ public class Main {
     }
 
     public int findSymbolOccurance(String str, char ch) {
+        Objects.requireNonNull(str, "string must not be null");
         char[] letters = str.toCharArray();
         int count = 0;
 
@@ -53,6 +55,7 @@ public class Main {
     }
 
     public String stringReverse(String simpleString) {
+        Objects.requireNonNull(simpleString, "string must not be null");
         char[] stringInLetters = simpleString.toCharArray();
         String result = "";
 
@@ -67,6 +70,7 @@ public class Main {
     }
 
     public boolean isPalindrome(String source) {
+        Objects.requireNonNull(source, "string must not be null");
         if (source == null || source == "") {
             return false;
         }
@@ -92,12 +96,16 @@ public class Main {
             System.out.println("Спробуй вгадати слово, яке я загадав!");
             playerChoice = input.nextLine().toLowerCase();
 
-            if (playerChoice.equals(word)) {
-                System.out.println("Ти вгадав!");
-                break;
+            if (playerChoice.length() >= 1) {
+                if (playerChoice.equals(word)) {
+                    System.out.println("Ти вгадав!");
+                    break;
+                } else {
+                    System.out.println("Не вгадав! Вот тобі підказка");
+                    sameLetters(word, playerChoice);
+                }
             } else {
-                System.out.println("Не вгадав! Вот тобі підказка");
-                sameLetters(word, playerChoice);
+                System.out.println("You cannot enter a zero line");
             }
         } while (word != playerChoice);
     }
